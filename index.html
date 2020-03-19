@@ -51,7 +51,7 @@
           var hourColText = $("<p>").text(timeArray[i]);
           hourCol.append(hourColText);
           var contentCol = $("<div>").attr("class", "col").attr("class", "col-lg-10");
-          var textArea = $("<textarea>").attr("data-time", idArray[i]);
+          var textArea = $("<textarea>").attr("class", idArray[i]);
           var saveButton = $("<button>").attr("class", "saveBtn").attr("data-time", idArray[i]);
           saveButton.append($("<i>").attr("class", "fas fa-save"));
 
@@ -72,14 +72,31 @@
         $(".saveBtn").on("click", function(event) {
           event.preventDefault();
           var theId = $(this).attr("data-time");
-          localStorage.setItem(theId, $("textarea").val());
+          localStorage.setItem(theId, $("."+theId).val());
 
           // now that everything is saved to the DOM, figure out how to get saved values 
           // back on the page
-          
+          storedData();
         });
+        // create function
+        // iterate over idArray
+        // conditional if localstorage.getItem(idarray[i])
+        // set text to the existing textarea w that id
 
-
+        function storedData(){
+          var savedArray = [];
+          for(var i = 0; i < idArray.length; i++){
+            var savedData = {id: idArray[i], textFill: localStorage.getItem(idArray[i])};
+            savedArray.push(savedData);
+          };
+          for(var i = 0; i < savedArray.length; i++) {
+            if (savedArray[i].textFill != null){
+              var id = savedArray[i].id;
+              $("."+id).text(savedArray[i].textFill);
+            };
+          };
+        };
+        storedData();
       })
     </script>
     
