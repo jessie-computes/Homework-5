@@ -71,13 +71,14 @@
         // save those events to the DOM using a save button
         $(".saveBtn").on("click", function(event) {
           event.preventDefault();
-          console.log($(".saveBtn").attr("data-time"));
-          console.log($("textarea").val());
+          var theId = $(this).attr("data-time");
+          localStorage.setItem(theId, $("textarea").val());
 
-          // get data value -- idArray class
-
+          // now that everything is saved to the DOM, figure out how to get saved values 
+          // back on the page
           
         });
+
 
       })
     </script>
