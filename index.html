@@ -41,16 +41,16 @@
         console.log(date);
         $("#currentDay").text(date);
 
-        var timeArray = ["9  am", "10 am", "11 am", "12 pm", "1  pm", "2  pm", "3  pm", "4  pm", "5  pm"];
+        var timeArray = ["09 am", "10 am", "11 am", "12 pm", "01 pm", "02 pm", "03 pm", "04 pm", "05 pm"];
         var idArray = ["nine", "ten", "eleven", "twelve", "one", "two", "three", "four", "five"]
 
         // appends timeblocks
         for (var i = 0; i < timeArray.length; i++){
           var rowTime = $("<div>").attr("class", "time-block").attr("class", "row");
-          var hourCol = $("<div>").attr("class", "col").attr("class", "col-lg-1").attr("class", "hour");
+          var hourCol = $("<div>").attr("class", "col-lg-2 hour");
           var hourColText = $("<p>").text(timeArray[i]);
           hourCol.append(hourColText);
-          var contentCol = $("<div>").attr("class", "col").attr("class", "col-lg-10");
+          var contentCol = $("<div>").attr("class", "col-lg-8 future");
           var textArea = $("<textarea>").attr("class", idArray[i]);
           var saveButton = $("<button>").attr("class", "saveBtn").attr("data-time", idArray[i]);
           saveButton.append($("<i>").attr("class", "fas fa-save"));
