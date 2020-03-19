@@ -41,24 +41,43 @@
         console.log(date);
         $("#currentDay").text(date);
 
-        var timeArray = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
+        var timeArray = ["9  am", "10 am", "11 am", "12 pm", "1  pm", "2  pm", "3  pm", "4  pm", "5  pm"];
+        var idArray = ["nine", "ten", "eleven", "twelve", "one", "two", "three", "four", "five"]
 
+        // appends timeblocks
         for (var i = 0; i < timeArray.length; i++){
           var rowTime = $("<div>").attr("class", "time-block").attr("class", "row");
           var hourCol = $("<div>").attr("class", "col").attr("class", "col-lg-1").attr("class", "hour");
           var hourColText = $("<p>").text(timeArray[i]);
           hourCol.append(hourColText);
           var contentCol = $("<div>").attr("class", "col").attr("class", "col-lg-10");
-          var textArea = $("<textarea>");
+          var textArea = $("<textarea>").attr("data-time", idArray[i]);
+          var saveButton = $("<button>").attr("class", "saveBtn").attr("data-time", idArray[i]);
+          saveButton.append($("<i>").attr("class", "fas fa-save"));
 
           contentCol.append(textArea);
-          rowTime.append(hourCol).append(contentCol);
-
-
+          rowTime.append(hourCol).append(contentCol).append(saveButton);
+                    
           $(".container").append(rowTime);
+          colorBlock();
         };
+        // color code each timeblock        
+        function colorBlock(){
+          var currentTime = moment().format("h a");
+          console.log(currentTime);
+        }
+        
+        // be able to add events for each timeblock
+        // save those events to the DOM using a save button
+        $(".saveBtn").on("click", function(event) {
+          event.preventDefault();
+          console.log($(".saveBtn").attr("data-time"));
+          console.log($("textarea").val());
 
+          // get data value -- idArray class
 
+          
+        });
 
       })
     </script>
