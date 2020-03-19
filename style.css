@@ -64,6 +64,9 @@ textarea{
   background-color: #06AED5;
   color: white;
 }
+.fa-save {
+  padding: 20px;
+}
 
 .saveBtn i:hover {
   font-size: 20px;
